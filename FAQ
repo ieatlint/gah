@@ -1,0 +1,52 @@
+
+
+Why not use OSCAR instead of TOC?
+For 2 very good reasons.  First, OSCAR has only a few advantages over TOC I'm aware of:
+buddy icons -- Something useless for a non-GUI program
+the ability to see when the other party is typing a message -- A rather useless feature
+the ability to request a file transfer from the other party -- I would assume this to be useless as well, unless it works so that if 1 person is behind a firewall and is trying to send a file, the other person can request the file.  Makes sense, but it won't precipitate a protocol switch by itself.
+the ability to obtain someones away message without sending a message -- Perhaps a nice feature, but makes a small dent in my laziness
+The second reason is that OSCAR is much more complicated, and, since multiple connections must be made and sustained, more prone to failures.
+
+There are existing OSCAR libraries out there, like libfaim, to add support, why not use them?
+Because I wrote this as a means of expanding my knowledge of C++.  I learn more writing my own protocol handlers.
+
+Why is it named gah?
+For a number of reasons, each listed in reverse logical order:
+gah is a grunting noise demonstrating frustration
+gah stands for "God Also Hates"
+caim was taken
+
+Why don't you add support for ...?
+Because...
+You didnt fill in a feature request form on the project page
+Thats an idiotic idea
+Thats too much work OR not something I want to do
+It's already there, but its undocumented and I wont show you how to use it.  Its there though.
+
+The debug log doesn't seem to log when the logger enters the logging functions, why not?
+You're an idiot.
+
+Why do they call it a FAQ when no one really asks the questions on it?
+Im sorry, FAQ doesnt stand for Frequently asked questions, it stands for Flamboyent and Queer.
+
+Does Tom really like men, or is just a long standing joke?
+Yes.
+
+Who's Tom?
+Tom Anderson.  If you don't know who he is, then you definetly didn't know what the architect was talking about.
+
+How can I donate money?
+Just kidding.
+
+Why is the code so messy?
+Its not, its organized using a complex method of laziness combined with a minor case wrist cramps due to bad posture.
+
+Do you know you misspelled... ?
+This question? Yes, I know.
+
+The program called me an 'Aarsridder'.  What does that even mean?
+It doesnt taste as good as it sounds.
+
+Why are you a racist homophobic communist?
+I'm racist because I needed another excuse for my arrogance, homophobic because it hilarious, and a communist because religion is the opiate of the masses.

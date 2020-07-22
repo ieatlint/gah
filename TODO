@@ -1,0 +1,21 @@
+The following features will be added (in a timely fashion):
+
+/quote command (for those who dont know, it means to send raw commands, so you could for instance, type "/quote toc_add_buddy someone")
+
+have the status window display information for your current query, whether or not that person is on your buddy list
+
+supporting adding, removing people from your buddy list
+
+support blocking people
+
+
+The following features will be added eventually:
+file transfer
+
+dcc chat
+
+chat rooms
+
+Things that will never be done:
+bug fixes
+any type of command that has malicious intent (such as some sort of flooder)

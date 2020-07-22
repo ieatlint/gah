@@ -1,0 +1,81 @@
+Version 1.39
+
+Bugs Fixed:
+
+Known Issues:
+
+New Features:
+Primitive logging support.  It now has the ability to log all messages (in/out) and status changes (ie sign on/off, idle/away, etc) to a single log file.
+
+Version 1.38
+
+Bugs Fixed:
+A signon issue.  Now let us never speak of this again.
+
+Known Issues:
+Same as 1.37 minus the signon issue
+
+New Features:
+If you /query someone not on your buddy list, that user will be added TEMPORARILY to it.  This means you will receive update notifications, and the status line will be filled in, but no buddy list settings are actualy altered on the server.  The user must be online to receive said information (although if you add an offline user, you will receive a message for his signon)
+/quote is a new command, it supports raw commands.  If you dont know what this is or does, stay away from it.
+The encrypted option in the config file has been removed.  If a password begins with "0x" it is assume to be roasted (this goes for the command line and password prompt as well).
+
+
+Version 1.37
+
+Bugs Fixed:
+-
+
+Known Issues:
+Same as 1.36 Plus:
+If someones online or idle time exceeds 99 hours and 59 minutes, the status window does bad things
+Its currently in a non-working state for me, connection to aim is being dropped for unknown reasons.
+
+
+New Features:
+The following command line options have been added:
+-d -- debug
+-v -- version (quit after printing ver number)
+-u -- specify your login name
+-p -- specify your password
+-P -- Since TOC works on ALL ports, specify your port to connect to here (default is 5190)
+-h -- help on these commands
+-c -- Specify config file
+
+Configuration files:
+A sample file is included, currently gah checks its current folder for gah.conf, then /etc.  You can also specify the location on the command line.
+
+Version 1.36
+
+Bugs Fixed:
+Code optimisation, migrated several for loops to a function call.
+holding down enter previously flooded your console with blank outgoing messages.  Since the content of these messages was null, they were never delivered, all they did was kill your message queue.
+You can now query yourself.  You must be proud to have such a good friend.
+
+Known Issues:
+Lowering the vertical resolution of the terminal.  Blank lines are now inserted so everything is scrolled up, however there is an extra blank line placed in I cant seem to get rid of.
+Increasing the horizontal resolution of the terminal causes the query line of the status window to only fill in blue to its previous end of line.  Seems to fix itself after a couple of minutes or so.. weird.
+When increasing or decreasing the terminal verticly, there may be a blue char left at the far right side from where the status window used to be.
+Do not lower the terminals width to below 60.  Do not lower the height to below 4.  These are theoretical limits, things may fuck up as you approach these.
+
+
+New Features:
+/wi is an alias to /whois
+/whois with no arguments performs a whois on your current query
+/whoami displays a whois on yourself (/whois'ing yourself works as well)
+when you /query someone not on your buddy list, their nick will appear on the status window
+
+
+
+Version 1.35
+
+Bugs Fixed:
+When your warning level decreases, you get a message saying you were just warned.  That message is now supressed.
+If you wernt in a query with someone when receiving a KEEPALIVE, the strncmp to deturmine the user you were in a query with would wrongly return true for the first blank user.
+
+Known Issues:
+query line of status window has issues with resizes... seems to repair itself after the first KEEPALIVE update.  need to look into this.
+resizing below 80x24 is bad
+
+New Features:
+You can now resize the terminal! (And start in a terminal other then 80x24)

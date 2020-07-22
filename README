@@ -1,0 +1,70 @@
+To compile:
+g++ -o gah -lncurses main.cpp
+OR
+make
+
+
+NOTE:
+This readme is now very outdated, until i
+
+New as of 1.35 Beta:
+Support of terminals larger then 80x24 and to resize the terminal.
+
+
+Since its beta, I suggest not testing to see if you can crash it.  Give commands exactly what they expect.
+CTRL+C will execute endwin() [good].  SIGQUIT, SIGABRT, SIGKILL, SIGHUP (not an issue I guess) WON'T.
+If you want to find out why you shouldnt use anything but SIGINT, try it!
+
+gah usage:
+./gah [-d]
+
+If -d is present (actualy if argc>1), debug mode is initiated.  Every function is logged as it is entered and exited, and often data relevant to the function call is as well (such as a received or sent IM).  The log file location is gah's home dir, named "debug".   Note that this log file averages 15-20kb for short usages.  It also is of no use unless you intend to alter the code.  
+
+After execution, gah will initilize its classes, create sockets, and resolve toc.oscar.aol.com.  If all works, it proceeds to prompt for your username and password.  Your username must be entered in a normalized (lowercase, no spaces) form.
+
+The screen will then output one of the following:
+Connecting12345678
+Each number represents a step on the AIM signon process.  This is so you can identify where it went wrong.  Here is the steps:
+1. Connect
+2. FLAPON String
+3. FLAPON Packet (recv)
+4. FLAPON Packet (send)TIOCGWINSZ
+5. toc_signon
+6. SIGN_ON (You are now authenticated)
+7. toc_add_buddy <self> (You now appear on peoples buddy lists)
+8. toc_init_done
+
+The UI will then be activated along with the main control loop.  There will immediatly be data waiting for you on the network, so a number of things will happen:
+You buddy list will become populated, and toc_add_buddy sent so you recv updates of your buddies
+A number of UI entries will be set
+
+
+You are now in gah, the following commands will work:
+NOTE: All usernames MUST be entered normalized!
+
+/query <user>  -- start a query with the user.  The users information will be displayed above your current status, and all input not proceeded with a '/' will be sent as an IM to this person.
+
+/msg <user> <msg> -- Send a message to a user without querying them
+/auto <user> <msg> -- Same as above, except the message appears as an auto-response (dont make me regret this feature)
+
+/away [msg] -- Set or unset away (toggles).  The away message is optional.  Note that there will be no auto-response to users who message you!
+
+/idle HH:mm -- Set your idle time.  TOC seems to support idle times of 1 month, with the hours filed a little over 1000.  If you run it without a time, it sets your idle time as 0, and starts counting up, if your already idle, it unsets your idle time.  Being idle is cosmetic only, you can still send and recv messages while idle.
+
+/whois <user> -- Gives you detailed information about that specific user.
+/who -- Prints out everyone who is online on your buddy list and if they are available (idle/away)
+
+/quit ...
+/exit ...
+
+Known issues:
+Its easy to cause buffer overruns, if you run into a segmentation fault, please tell me where and what you were doing (debug logs are helpful).
+Terminals smaller then 80x24 cause bad things.
+Resizing causes weird things to happen to the query line of status window.
+
+The UI has issues.  Such as the cursor being displayed outside of the input window.
+
+
+If you need to exit immediatly:
+SIGINT closes the network socket and then runs endwin.
+SIGQUIT is not handled, but it will fuck up your terminal without endwin.
